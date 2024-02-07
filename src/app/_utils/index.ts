@@ -51,7 +51,7 @@ export const api_call_put = (path: string, body: any, headers: any[] = []): Prom
 export const api_call_delete = (path: string, headers: any[] = []): Promise<any> => {
     return api_call('DELETE', null, path, headers, true);
 }
-// ***************** no -cache ****************
+// ***************** no-cache ****************
 export const api_call_get_no_cache = (path: string, headers: any[] = []): Promise<any> => {
     return api_call('GET', null, path, headers, false);
 }
