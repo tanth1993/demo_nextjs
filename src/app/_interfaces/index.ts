@@ -6,3 +6,13 @@ export interface INews {
     createdAt?: Date
     updatedAt?: Date
 }
+
+export interface IServerSideProp<P, S = undefined> {
+    params: P;
+    searchParams: S;
+}
+export interface IPaginationQuery {
+    text?: string
+    page?: number
+    pageSize?: number
+}
