@@ -9,7 +9,6 @@ export default async function Page(props: IServerSideProp<{ id: string }>) {
         notFound()
 
     const { content, title, imageUrl } = data || {}
-
     return (
         <main className="flex justify-center p-24">
             <div className="w-3/6 card-compact">

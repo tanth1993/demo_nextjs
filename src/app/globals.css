@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.ck.ck-toolbar__items {
+    background-color: #5c7091 !important;
+}
+
+.ck-editor__editable_inline {
+    background-color: #374151 !important;
+    min-height: 400px;
+}
+
+.ck-content * {
+    all: revert;
+}

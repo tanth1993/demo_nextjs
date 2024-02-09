@@ -1,13 +1,8 @@
 import * as Utils from '@dev/app/_utils'
 import * as Interfaces from '@dev/app/_interfaces'
 
-const domainUrl = 'http://127.0.0.1:3099/api'
-// router.get('/news', NewsController.index)
-// router.use('/news-by-query', NewsController.getDataByQuery)
-// router.get('/news/:id', NewsController.getDetail)
-// router.post('/news-create', jsonParser, NewsController.createNews)
-// router.put('/news-update/:id', jsonParser, NewsController.updateNews)
-// router.delete('/news-delete', NewsController.deleteMany)
+const domainUrl = process.env.NODE_ENV === 'development' ? 'http://127.0.0.1:3099/api' : 'https://report-server-api.vercel.app/api/'
+
 
 export const getAllNews = async (): Promise<Interfaces.INews[]> => {
     const path = `${domainUrl}/news`

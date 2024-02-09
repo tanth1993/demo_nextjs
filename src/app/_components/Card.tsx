@@ -17,7 +17,7 @@ export function Card(props: IProps) {
                 <p className='truncate'>{content}</p>
                 <div className="card-actions justify-end">
                     <Link href={`/detail/${_id}`}>
-                        <button className="btn btn-primary">Detail</button>
+                        <button className="btn btn-info">Detail</button>
                     </Link>
                 </div>
             </div>
