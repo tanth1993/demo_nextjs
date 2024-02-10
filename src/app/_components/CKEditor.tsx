@@ -39,7 +39,7 @@ function CustomEditor(props: IProps) {
             config={editorConfiguration(props)}
             data={props?.data}
             onChange={(event, editor) => {
-                console.log(editor.getData());
+                props.onChange && props.onChange(editor.getData());
             }}
 
         />
