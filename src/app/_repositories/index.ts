@@ -6,7 +6,7 @@ const domainUrl = process.env.NODE_ENV === 'development' ? 'http://127.0.0.1:309
 
 export const getAllNews = async (): Promise<Interfaces.INews[]> => {
     const path = `${domainUrl}/news`
-    const data = await Utils.api_call_get(path)
+    const data = await Utils.api_call_get_no_cache(path)
     return data
 }
 

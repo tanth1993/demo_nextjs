@@ -10,8 +10,8 @@ export function Card(props: IProps) {
     const { content, imageUrl, title, _id } = props.item || {}
 
     return (
-        <div className="card card-compact w-96 bg-neutral text-neutral-content">
-            <figure><img src={imageUrl} alt={title} /></figure>
+        <div className="card card-compact w-96 bg-neutral text-neutral-content self-stretch">
+            <figure className='w-[100%] h-[200px] '><img className='w-[100%]' src={imageUrl} alt={title} /></figure>
             <div className="card-body">
                 <h2 className="card-title">{title}</h2>
                 <p className='truncate'>{content}</p>

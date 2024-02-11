@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react'
 import dynamic from 'next/dynamic';
 import { INews, ICloudImage } from '@dev/app/_interfaces'
 import { cloud } from '@dev/app/_utils/Icons'
-import { api_call_post_no_cache } from '@dev/app/_utils'
 interface IProps extends React.PropsWithChildren {
     item?: INews
     onChangeItemTemp?: (item: INews) => void
@@ -12,9 +11,6 @@ interface IProps extends React.PropsWithChildren {
 const Editor = dynamic(() => {
     return import('@dev/app/_components/CKEditor');
 }, { ssr: false });
-
-const cloudName = 'dgjalonkb'
-const cloudURL = `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`
 
 export function Form(props: IProps) {
     const { item, onChangeItemTemp } = props
@@ -26,7 +22,7 @@ export function Form(props: IProps) {
 
     useEffect(() => {
         const newItem: INews = {
-            _id,
+            ...item,
             title: titleTemp,
             imageUrl: imgTemp,
             content: contentTemp
@@ -40,7 +36,7 @@ export function Form(props: IProps) {
         formData.append('file', file)
         formData.append('upload_preset', 'spc164om')
 
-        const data: ICloudImage = await fetch(cloudURL, {
+        const data: ICloudImage = await fetch(process.env.NEXT_PUBLIC_CLOUD_URL as string, {
             method: 'POST',
             body: formData
         }).then(r => r.json());

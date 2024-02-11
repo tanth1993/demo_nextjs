@@ -5,6 +5,8 @@ export interface INews {
     imageUrl?: string
     createdAt?: Date
     updatedAt?: Date
+    idGen?: string // client only
+    counter?: number // client only
 }
 
 export interface IServerSideProp<P, S = undefined> {
