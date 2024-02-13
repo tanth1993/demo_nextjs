@@ -1,3 +1,4 @@
+import slugify from 'slugify'
 const api_call = async (method: string, body: any, path: string, headers: any[], isCache: boolean): Promise<any> => {
     let url = path;
     let _headers = {
@@ -70,4 +71,14 @@ export const api_call_delete_no_cache = (path: string, headers: any[] = []): Pro
 export const PREFIX = 'tan2cang1993 - '
 export const trimHTML = (content?: string) => {
     return content?.replace(/(<([^>]+)>)/gi, "")
+}
+export const slugifyStr = (str?: string) => {
+    if (!str) return ''
+
+    return slugify(str, {
+        strict: true,
+        lower: true,      // convert to lower case, defaults to `false`
+        locale: 'vi',      // language code of the locale to use
+        trim: true         // trim leading and trailing replacement chars, defaults to `true`
+    })
 }

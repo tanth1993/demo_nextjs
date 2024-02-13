@@ -2,7 +2,7 @@
 import React from 'react'
 import { INews } from '@dev/app/_interfaces'
 import Link from 'next/link'
-import { trimHTML } from '../_utils'
+import { slugifyStr, trimHTML, PREFIX } from '../_utils'
 interface IProps extends React.PropsWithChildren {
     item?: INews
     checkItems?: string[]
@@ -29,7 +29,7 @@ export function Card(props: IProps) {
                 <h2 className="card-title">{title}</h2>
                 <p className='truncate'>{trimHTML(content)}</p>
                 <div className="card-actions justify-end">
-                    <Link href={`/detail/${_id}`}>
+                    <Link href={`/detail/${_id}/${slugifyStr(PREFIX + title)}`}>
                         <button className="btn btn-info">Detail</button>
                     </Link>
                 </div>

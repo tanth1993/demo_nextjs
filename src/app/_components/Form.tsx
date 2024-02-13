@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react'
 import dynamic from 'next/dynamic';
 import { INews, ICloudImage } from '@dev/app/_interfaces'
 import { cloud } from '@dev/app/_utils/Icons'
+import Image from 'next/image'
+
 interface IProps extends React.PropsWithChildren {
     item?: INews
     onChangeItemTemp?: (item: INews) => void
@@ -56,8 +58,8 @@ export function Form(props: IProps) {
     }
     // ************************* render ************************
     const renderImg = () => {
-        return <div className="flex items-center justify-center w-full">
-            <img src={imgTemp} alt={titleTemp} />
+        return <div className="flex items-center relative justify-center h-[500px] w-full">
+            <Image src={imgTemp} alt={titleTemp} fill priority />
         </div>
     }
     const renderImageUpload = () => {
@@ -73,7 +75,7 @@ export function Form(props: IProps) {
         </div>
     }
     const renderTitle = () => {
-        return <div className="my-3 ">
+        return <div className="my-3">
             {<input
                 disabled={isReadOnly}
                 value={titleTemp}
@@ -97,7 +99,7 @@ export function Form(props: IProps) {
     return (
         <>
             <div className="card-compact">
-                <div className="max-h-[500px] overflow-hidden">
+                <div className="m-h-[500px] overflow-hidden">
                     {!!imgTemp.length ? renderImg() : renderImageUpload()}
                 </div>
                 <div className="mt-3">

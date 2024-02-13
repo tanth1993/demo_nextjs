@@ -5,10 +5,10 @@ import { notFound } from 'next/navigation';
 import { Metadata, ResolvingMetadata } from 'next'
 import { trimHTML, PREFIX } from '@dev/app/_utils';
 
-export async function generateMetadata(props: IServerSideProp<{ id: string }>, parent: ResolvingMetadata): Promise<Metadata> {
+export async function generateMetadata(props: IServerSideProp<{ segments: string[] }>, parent: ResolvingMetadata): Promise<Metadata> {
     const { params } = props
     // read route params
-    const id = params.id
+    const [id, slug] = params.segments
 
     // fetch data
     const data = await getDetailNews(id)
@@ -26,8 +26,9 @@ export async function generateMetadata(props: IServerSideProp<{ id: string }>, p
 }
 
 
-export default async function Page(props: IServerSideProp<{ id: string }>) {
-    const { id } = props.params
+export default async function Page(props: IServerSideProp<{ segments: string[] }>) {
+    const [id, slug] = props.params.segments
+
     const data = await getDetailNews(id)
     if (!data)
         notFound()
