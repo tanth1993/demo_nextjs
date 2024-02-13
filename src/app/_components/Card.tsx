@@ -2,6 +2,7 @@
 import React from 'react'
 import { INews } from '@dev/app/_interfaces'
 import Link from 'next/link'
+import { trimHTML } from '../_utils'
 interface IProps extends React.PropsWithChildren {
     item?: INews
     checkItems?: string[]
@@ -26,7 +27,7 @@ export function Card(props: IProps) {
             <figure className='w-[100%] h-[200px] '><img className='w-[100%]' src={imageUrl} alt={title} /></figure>
             <div className="card-body">
                 <h2 className="card-title">{title}</h2>
-                <p className='truncate'>{content}</p>
+                <p className='truncate'>{trimHTML(content)}</p>
                 <div className="card-actions justify-end">
                     <Link href={`/detail/${_id}`}>
                         <button className="btn btn-info">Detail</button>

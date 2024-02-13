@@ -14,3 +14,22 @@
 .ck-content * {
     all: revert;
 }
+
+.is-detail .ck-editor__top {
+    display: none;
+}
+
+.ck-read-only {
+    background: transparent !important;
+    border: none !important;
+}
+
+.is-title:disabled {
+    background: transparent;
+    border: none;
+    gap: 0.5rem;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    font-weight: 600;
+    color: #9aadbb;
+}

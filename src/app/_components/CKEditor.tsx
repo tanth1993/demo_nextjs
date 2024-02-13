@@ -6,6 +6,7 @@ interface IProps {
     data?: string
     onChange?: (d: string) => void
     placeHolder?: string
+    isReadOnly?: boolean
 }
 const editorConfiguration = (props: IProps): EditorConfig => {
     return {
@@ -35,6 +36,7 @@ const editorConfiguration = (props: IProps): EditorConfig => {
 function CustomEditor(props: IProps) {
     return (
         <CKEditor
+            disabled={props.isReadOnly}
             editor={Editor}
             config={editorConfiguration(props)}
             data={props?.data}

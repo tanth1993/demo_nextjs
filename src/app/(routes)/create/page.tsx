@@ -3,14 +3,25 @@ import { Form } from "@dev/app/_components";
 import { INews } from '@dev/app/_interfaces'
 import { createNews } from "@dev/app/_repositories";
 import { useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Page(props) {
+    const router = useRouter()
     const counter = useRef(1)
     const [newsItems, setNewsItems] = useState<INews[]>([{ idGen: crypto.randomUUID(), counter: counter.current }])
 
     const onSubmit = async () => {
         const data = await createNews(newsItems)
-        console.log(data)
+        if (data.length > 0) {
+            router.replace('/')
+            router.refresh()
+        }
+    }
+
+    const onCancel = () => {
+        router.replace('/')
+        router.refresh()
+
     }
     const onAdd = () => {
         const items = [...newsItems]
@@ -60,7 +71,7 @@ export default function Page(props) {
             </div>
             <div className="flex gap-2 p-5">
                 <button className="btn btn-success" onClick={onSubmit}>Submit</button>
-                <button className="btn btn-outline">Cancel</button>
+                <button className="btn btn-outline" onClick={onCancel}>Cancel</button>
             </div>
         </div>
     }
